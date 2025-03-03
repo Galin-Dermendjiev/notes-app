@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* Masonry grid container */
+.my-masonry-grid {
+    display: flex;
+    flex-wrap: wrap; /* Ensures items will wrap properly */
+    margin-left: -10px; /* gutter size offset */
+    width: 100%; /* Makes sure the container takes up the full width */
+  }
+  
+  /* Masonry grid columns */
+  .my-masonry-grid_column {
+    padding-left: 10px; /* gutter size */
+    width: 100%; /* Ensures each column is full-width within the flexbox layout */
+    background-clip: padding-box;
+  }
+  

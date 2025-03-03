@@ -1,0 +1,46 @@
+### Register a user POST /register
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "username": "test",
+    "email": "test@gmail.com",
+    "password": "123123123"
+}
+
+### Login a user POST /login
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "username": "test",
+    "password": "123123123"
+}
+
+### Fetch all notes GET /notes (protected)
+GET http://localhost:5000/notes
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNzQwNzYxNDA3LCJleHAiOjE3NDA3ODMwMDd9.cM5X5o6Kn3K7Xeh_w753k_YuBooPo_WfCUvcLh74SCw
+
+### Create a new note POST /notes (protected)
+POST http://localhost:5000/notes
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNzQwNzYxNDA3LCJleHAiOjE3NDA3ODMwMDd9.cM5X5o6Kn3K7Xeh_w753k_YuBooPo_WfCUvcLh74SCw
+Content-Type: application/json
+
+{
+    "title": "My first note3",
+    "content": "This is the content of the first note."
+}
+
+### Update a note PUT /notes/:id (protected)
+PUT http://localhost:5000/notes/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQwNjgzNzA4LCJleHAiOjE3NDA3MDUzMDh9.jpyBirc-5ikGcqEjG9wFJaHfC6mThSfY73JOoznjRBU
+Content-Type: application/json
+
+{
+    "title": "Updated note title",
+    "content": "Updated note content"
+}
+
+### Delete a note DELETE /notes/:id (protected)
+DELETE http://localhost:5000/notes/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM3NzQ1OTk1LCJleHAiOjE3Mzc3Njc1OTV9.CwCEqfj8IdN1n2WuhipHdOhVs9sG_fx8SGJYrUTrCsI
