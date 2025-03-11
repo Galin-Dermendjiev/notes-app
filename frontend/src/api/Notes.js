@@ -55,7 +55,6 @@ export async function updateNote(noteId, title, description) {
   if (!token) {
     throw new Error("User not authenticated");
   }
-  console.log("Updating note:", noteId, title, description);
 
   const response = await fetch(NOTES_URL + `/${noteId}`, {
     method: "PUT",

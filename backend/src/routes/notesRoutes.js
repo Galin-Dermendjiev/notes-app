@@ -63,7 +63,7 @@ router.post(
 // PUT update an existing note
 router.put('/:id', async (req, res) => {
     const { title, content } = req.body;
-    const id = req.params.id;
+    const id = parseInt(req.params.id, 10)
     const currentDate = new Date()
 
     try {
@@ -88,16 +88,14 @@ router.put('/:id', async (req, res) => {
 
 // DELETE a note
 router.delete('/:id', async (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id, 10)
     const userId = req.userId;
 
     try {
         await prisma.note.delete({
             where: {
-                AND: [
-                    { id },
-                    { userId }
-                ]
+                id,
+                userId: req.userId
             }
         });
 
@@ -110,8 +108,11 @@ router.delete('/:id', async (req, res) => {
 
 // Helper function to format the date from YYYY-MM-DD to DD/MM/YYYY
 function formatDateForDisplay(date) {
-    const [year, month, day] = date.split('-');
-    return `${day}/${month}/${year}`;  // Format as DD/MM/YYYY
+    if (!(date instanceof Date)) {
+        date = new Date(date); // Ensure it's a Date object
+    }
+
+    return date.toISOString().split('T')[0].split('-').reverse().join('/'); 
 }
 
 export default router;
